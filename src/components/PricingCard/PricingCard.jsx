@@ -20,7 +20,7 @@ const PricingCard = ({ pricing }) => {
                         feature={feature}></PricingFeature>)
                 }
             </div>
-            <button className="btn w-full mt-2">Subscribe</button>
+            <button className="btn btn-primary w-full mt-2">Subscribe</button>
         </div>
     );
 };

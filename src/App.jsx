@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import PricingOptions from './components/PricingOptions/PricingOptions';
+import ResultChart from './components/ResultChart/ResultChart';
 
 
 const pricingPromise = fetch('PricingData.json').then(res => res.json());
@@ -62,6 +63,8 @@ function App() {
 <Suspense>
   <PricingOptions pricingPromise={pricingPromise}></PricingOptions>
 </Suspense>
+
+<ResultChart></ResultChart>
 </main>
 
     
