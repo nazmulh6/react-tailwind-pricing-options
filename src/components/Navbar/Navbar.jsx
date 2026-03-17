@@ -1,4 +1,5 @@
-import React from 'react';
+import { Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
 
 const navLinks = [
   {
@@ -26,22 +27,29 @@ const navLinks = [
 
 
 const Navbar = () => {
-    return (
-        <nav >
-<ul className='flex justify-center'>
-    {
-    navLinks.map(route =><li className='mr-10'><a href={route.path}>{route.name}</a></li>)
-}
+  const [open, setOpen] = useState(false)
+  const links =navLinks.map(route => <li className='mr-10 hover:bg-amber-400'><a href={route.path}>{route.name}</a></li>)
+  return (
+    <nav className='flex justify-between mx-auto max-w-[1200px] mt-4'>
+      <span className='flex items-center' onClick={() => setOpen(!open)}>
+        {
+          open ?
+            <X className='md:hidden'></X> :
+            <Menu className='md:hidden'></Menu>
+        }
+<ul className={`md:hidden absolute bg-amber-200 p-4 duration-1000 ${open? 'top-8 ': '-top-40 '}`}>
+  {links}
 </ul>
-
-            {/* <ul className='flex gap-5'>
-                <li><a href="/home"> Home</a></li>
-                <li><a href="/about"> About</a></li>
-                <li><a href="/blog"> Blog</a></li>
-                <li><a href="/contact"> Contact</a></li>
-            </ul> */}
-        </nav>
-    );
+        <h2 className='ml-2 font-bold'>My Nav</h2>
+      </span>
+      <ul className='md:flex hidden '>
+        {
+          links
+        }
+      </ul>
+      <button>Sign In</button>
+    </nav>
+  );
 };
 
 export default Navbar;
